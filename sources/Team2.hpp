@@ -17,9 +17,7 @@ namespace ariel{
 
             
         public:
-            Team2(Character *leader);
-            //~Team2()=default;
-            
+            Team2(Character *leader);           
             void print() override;
             void attackInOrder(Character* enemy,Team *other) override;
 

@@ -26,8 +26,13 @@ namespace ariel{
         }
     }
     string Cowboy::print(){
-        return "name: "+this->getName()+",location: "+this->getLocation().print()+",hit points: "+to_string(this->getHitPoints())+\
-        ",bullets: "+to_string(bullets);
+        if(this->isAlive()){
+            return "name: "+this->getName()+",location: "+this->getLocation().print()+",hit points: "+to_string(this->getHitPoints());
+        
+        }
+        else{
+            return "name: C(" + this->getName() + ") point at: "+ this->getLocation().print();
+        }
     }
     bool Cowboy::hasboolets() const{
         return (this->bullets>0);

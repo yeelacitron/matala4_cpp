@@ -7,8 +7,13 @@ namespace ariel{
     }
     
     string Ninja::print() {
-                return "name: "+this->getName()+",location: "+this->getLocation().print()+",hit points: "+to_string(this->getHitPoints())+\
-        ",speed: "+to_string(speed);
+        if(this->isAlive()){
+            return "name: "+this->getName()+",location: "+this->getLocation().print()+",hit points: "+to_string(this->getHitPoints());
+        }
+        else{
+            return "name: N(" + this->getName() + ") point at: "+ this->getLocation().print();
+        }    
+        
     }
     void Ninja::move(Character* enemy){
         this->setLocation(Point::moveTowards(this->getLocation(),enemy->getLocation(),speed));

@@ -31,9 +31,8 @@ namespace ariel{
         double dy = dst.y_coordinate - src.y_coordinate;
         
         // Normalize the direction vector
-        double length = sqrt(dx * dx + dy * dy);
-        dx /= length;
-        dy /= length;
+        dx /= currentDistance;
+        dy /= currentDistance;
         
         // Calculate the new point within the given distance
         float newX = src.x_coordinate + dx * distance;

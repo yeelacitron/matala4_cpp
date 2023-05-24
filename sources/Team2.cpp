@@ -7,7 +7,10 @@ namespace ariel{
 
     }
     void Team2::print(){
-
+        for (Character * fighter: getFighers())
+        {
+            cout << fighter->print() << endl;  
+        }
     }
     void Team2::attackInOrder(Character* enemy,Team *other){
         for(Character* fighter : getFighers()){

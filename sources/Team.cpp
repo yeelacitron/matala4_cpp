@@ -114,9 +114,21 @@ namespace ariel
     }
     void Team::print()
     {
-        for (size_t i = 0; i < fighters.size(); i++)
+        for (Character * fighter: fighters)
         {
-            cout << fighters[i]->print() << endl;
+            Cowboy *nptr = dynamic_cast<Cowboy *>(fighter);
+            if (nptr != NULL)
+            {
+                cout << fighter->print() << endl;
+            }
+        }
+        for (Character * fighter: fighters)
+        {
+            Ninja *nptr = dynamic_cast<Ninja *>(fighter);
+            if (nptr != NULL)
+            {
+                cout << fighter->print() << endl;
+            }
         }
     }
     Character *Team::getLeader() const
@@ -126,21 +138,7 @@ namespace ariel
 
     Character *Team::assaignNewLeader()
     {
-        double dist = numeric_limits<double>::max();
-        Character *newLeader = NULL;
-        for (size_t i = 0; i < fighters.size(); i++)
-        {
-            if (fighters[i]->isAlive())
-            {
-                double curr_dist = leader->distance(fighters[i]);
-                if (curr_dist < dist)
-                {
-                    dist = curr_dist;
-                    newLeader = fighters[i];
-                }
-            }
-        }
-        return newLeader;
+        return this->replaceEnemy(this);
     }
 
     vector<Character *> Team::getFighers()
